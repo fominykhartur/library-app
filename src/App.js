@@ -6,7 +6,7 @@ import CategoriesMenu from './CategoriesMenu/CategoriesMenu'
 import ProgressBar from './ProgressBar/ProgressBar'
 import _ from 'lodash';
 
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL + (process.env.REACT_APP_SERVER_LOCAL === 'NO' ? '/' : '')
 
 class App extends Component {
     state = {
@@ -22,7 +22,8 @@ class App extends Component {
 
     async componentDidMount() {
         console.log('___________________');
-        // console.log(REACT_APP_API_URL)
+        console.log(process.env.REACT_APP_SERVER_LOCAL)
+        console.log(REACT_APP_API_URL)
         const responseData = await fetch(`${REACT_APP_API_URL}books`)
         const data = await responseData.json()
         console.log(data)
