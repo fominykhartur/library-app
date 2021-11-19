@@ -1,11 +1,12 @@
 import React from 'react';
 
-function updateStatus(id, status) {
+function updateStatus(API_URL, id, status) {
+    console.log(API_URL)
     let data = {
         id: id,
         status: status
     };
-    fetch('http://localhost:8080/updateStatus', {
+    fetch(`${API_URL}updateStatus`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -13,14 +14,15 @@ function updateStatus(id, status) {
     console.log(id, status);
 }
 
-function addBook(categoria, cycle, author, name) {
+function addBook(API_URL, categoria, cycle, author, name) {
+    console.log(API_URL)
     let data = {
         categoria: categoria,
         cycle: cycle,
         author: author,
         name: name
     };
-    fetch('http://localhost:8080/addBook', {
+    fetch(`${API_URL}addBook`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -56,7 +58,7 @@ export default props => {
                         <td>{item.subcycle}</td>
                         <td>{item.author}</td>
                         <td>{item.name}</td>
-                        <td>{item.status == 1 ? <label >Прочитано <input type="checkbox" checked='1' onChange={() => updateStatus(item.id, 0)}></input></label> : <label >Непрочитано <input type="checkbox" onChange={() => updateStatus(item.id, 1)}></input></label>}</td>
+                        <td>{item.status == 1 ? <label >Прочитано <input type="checkbox" checked='1' onChange={() => updateStatus(props.API_URL, item.id, 0)}></input></label> : <label >Непрочитано <input type="checkbox" onChange={() => updateStatus(props.API_URL, item.id, 1)}></input></label>}</td>
                     </tr>
                 ))}
                 <tr className={props.choosedCategorie == "0"?"d-none": ""}>
@@ -76,7 +78,7 @@ export default props => {
                 }
                 </datalist></td>
                 <td><input type="text" placeholder="Введите название" className="input-form" onChange={(event)=>{inputDate.name = event.target.value}}></input></td>
-                <td><button type="button" className="btn btn-outline-success" onClick={()=>addBook(props.choosedCategorie, inputDate.cycle, inputDate.author, inputDate.name)} disabled={inputDate.name}>Добавить книгу</button></td>
+                <td><button type="button" className="btn btn-outline-success" onClick={()=>addBook(props.API_URL, props.choosedCategorie, inputDate.cycle, inputDate.author, inputDate.name)} disabled={inputDate.name}>Добавить книгу</button></td>
                 </tr>
             </tbody>
         </table>)

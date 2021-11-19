@@ -31,6 +31,7 @@ class App extends Component {
         const categories = await responseCategories.json()
         console.log(categories)
         this.setState({
+            API_URL: REACT_APP_API_URL,
             isLoading: false,
             data: _.orderBy(data, this.state.sortField, this.state.sort),
             categories: categories
@@ -121,6 +122,7 @@ class App extends Component {
               sortField={this.state.sortField}
               reloadData={this.reloadHandler}
               choosedCategorie={this.state.choosedCategorie}
+              API_URL={this.state.API_URL}
               />
               </React.Fragment> 
             }
