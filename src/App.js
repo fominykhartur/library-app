@@ -87,8 +87,7 @@ class App extends Component {
         return categorized_data.filter(item => {
             return item['author'].toLowerCase().includes(search.toLowerCase()) ||
                 item['name'].toLowerCase().includes(search.toLowerCase()) ||
-                item['subcycle'].toLowerCase().includes(search.toLowerCase()) ||
-                item['status'].toLowerCase().includes(search.toLowerCase())
+                item['subcycle'].toLowerCase().includes(search.toLowerCase())
         })
     }
 
