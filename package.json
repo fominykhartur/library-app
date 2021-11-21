@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "local": "set 'REACT_APP_API_URL=http://localhost:8080/' && npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

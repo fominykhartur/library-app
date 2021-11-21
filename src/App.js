@@ -4,6 +4,7 @@ import Loader from './Loader/Loader';
 import TableSearch from './TableSearch/TableSearch';
 import CategoriesMenu from './CategoriesMenu/CategoriesMenu'
 import ProgressBar from './ProgressBar/ProgressBar'
+import Navbar from './Navbar/Navbar'
 import _ from 'lodash';
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL + (process.env.REACT_APP_SERVER_LOCAL === 'NO' ? '/' : '')
@@ -101,6 +102,7 @@ class App extends Component {
               this.state.isLoading 
               ? <Loader />
               : <React.Fragment>
+              <Navbar API_URL={this.state.API_URL} />
               <div class="container">
                   <div class="row">
                     <div class="col-sm">
